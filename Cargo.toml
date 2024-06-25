@@ -1,7 +1,15 @@
 [package]
-name = "lightspeed"
+name = "lightspeed_api"
 version = "0.1.0"
+authors = ["Nick Tacke <the.nick.tacke@gmail.com>"]
 edition = "2021"
+description = "A Rust crate for the Lightspeed eCommerce (C-Series) API"
+license = "MIT"
+repository = "https://github.com/NickTacke/lightspeed-api-rust"
+documentation = "https://docs.rs/lightspeed_api"
+readme = "README.md"
+keywords = ["lightspeed", "ecommerce", "api", "client"]
+categories = ["api-bindings", "web-programming"]
 
 [dependencies]
 reqwest = { version = "0.11", features = ["json"] }
