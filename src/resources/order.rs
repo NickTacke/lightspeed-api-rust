@@ -10,8 +10,16 @@ impl<'a> OrderResource<'a> {
         Self { client }
     }
 
-    pub async fn get(&self, id: &str) -> Result<serde_json::Value, Box<dyn Error>> {
+    pub async fn get_all(&self) -> Result<serde_json::Value, Box<dyn Error>> {
+        self.client.read("orders", None).await
+    }
+
+    pub async fn get_by_id(&self, id: &str) -> Result<serde_json::Value, Box<dyn Error>> {
         self.client.read(&format!("orders/{}", id), None).await
+    }
+
+    pub async fn get_by_number(&self, number: &str) -> Result<serde_json::Value, Box<dyn Error>> {
+        self.client.read("orders", Some(vec![("number", number)])).await
     }
 
     pub async fn list(&self, params: Option<Vec<(&str, &str)>>) -> Result<serde_json::Value, Box<dyn Error>> {
