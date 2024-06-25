@@ -31,6 +31,12 @@ impl LightspeedClient {
             _ => panic!("Invalid API server"),
         };
 
+        let resource_url = if resource_url.ends_with(".json") {
+            resource_url.to_string()
+        } else {
+            format!("{}.json", resource_url)
+        };
+
         format!(
             "{}{}{}{}",
             api_host, self.api_language, "/", resource_url
