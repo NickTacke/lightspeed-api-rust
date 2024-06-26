@@ -15,14 +15,12 @@ impl<'a> CustomerResource<'a> {
     }
 
     pub async fn get_by_id(&self, id: &str) -> Result<Customer, Box<dyn Error>> {
-        let customers: Option<Vec<Customer>> = self.client.read(&format!("customers/{}", id), None).await?;
+        let order: Option<CustomerWrapper> = self.client.read(&format!("customers/{}", id), None).await?;
         
-        Ok(customers
-            .and_then(|vec| vec.into_iter().next())
-            .ok_or_else(|| std::io::Error::new(
-                std::io::ErrorKind::NotFound,
-                "No customer found with given id!"
-            ))?)
+        Ok(order.and_then(| data | Some(data.customer)).ok_or_else(|| std::io::Error::new(
+            std::io::ErrorKind::NotFound,
+            "No order found with given id!"
+        ))?)
     }
 
     pub async fn create(&self, customer: Customer) -> Result<Customer, Box<dyn Error>> {
