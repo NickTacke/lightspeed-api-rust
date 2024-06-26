@@ -1,4 +1,5 @@
 use crate::LightspeedClient;
+use crate::models::Account;
 use std::error::Error;
 
 pub struct AccountResource<'a> {
@@ -10,7 +11,7 @@ impl<'a> AccountResource<'a> {
         Self { client }
     }
 
-    pub async fn get(&self) -> Result<serde_json::Value, Box<dyn Error>> {
+    pub async fn get(&self) -> Result<Account, Box<dyn Error>> {
         self.client.read("account", None).await
     }
 }
