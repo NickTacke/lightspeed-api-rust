@@ -27,6 +27,16 @@ pub struct Product {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Orders {
+    pub orders: Option<Vec<Order>>
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrderWrapper {
+    pub order: Order
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Order {
     pub id: i64,
     pub number: String,
