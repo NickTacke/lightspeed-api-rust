@@ -1,4 +1,4 @@
-use crate::{Count, Customer, CustomerWrapper, Customers, LightspeedClient};
+use crate::{LightspeedClient, Customer, CustomerWrapper, Customers, Count};
 use std::error::Error;
 
 pub struct CustomerResource<'a> {
