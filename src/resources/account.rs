@@ -1,4 +1,4 @@
-use crate::LightspeedClient;
+use crate::{AccountWrapper, LightspeedClient};
 use crate::models::Account;
 use std::error::Error;
 
@@ -12,6 +12,7 @@ impl<'a> AccountResource<'a> {
     }
 
     pub async fn get(&self) -> Result<Account, Box<dyn Error>> {
-        self.client.read("account", None).await
+        let wrapper: AccountWrapper = self.client.read("account", None).await?;
+        Ok(wrapper.account)
     }
 }
