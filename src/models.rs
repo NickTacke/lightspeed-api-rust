@@ -6,6 +6,11 @@ pub struct Count {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AccountWrapper {
+    pub account: Account
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Account {
     pub id: i64,
     pub name: String,
@@ -14,6 +19,16 @@ pub struct Account {
     pub language: String,
     pub created_at: String,
     pub updated_at: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Products {
+    pub products: Option<Vec<Product>>
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductWrapper {
+    pub product: Product
 }
 
 #[derive(Debug, Serialize, Deserialize)]
